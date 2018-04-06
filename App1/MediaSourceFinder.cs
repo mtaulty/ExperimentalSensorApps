@@ -19,23 +19,5 @@ namespace App1
 
             return (firstGroupWithAllSourceKinds);
         }
-        public static List<string> FindSourceInfosWithMaxFrameRates(
-            MediaFrameSourceGroup sourceGroup, params MediaFrameSourceKind[] sourceKinds)
-        {
-            var listSourceInfos = new List<string>();
-
-            foreach (var kind in sourceKinds)
-            {
-                var sourceInfos =
-                    sourceGroup.SourceInfos.Where(s => s.SourceKind == kind);
-
-                var maxInfo = sourceInfos.OrderByDescending(
-                    si => si.VideoProfileMediaDescription.Max(
-                        msd => msd.FrameRate * msd.Height * msd.Width)).First();
-
-                listSourceInfos.Add(maxInfo.Id);
-            }
-            return (listSourceInfos);
-        }
     }
 }

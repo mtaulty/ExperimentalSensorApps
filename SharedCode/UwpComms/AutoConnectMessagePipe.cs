@@ -3,8 +3,6 @@
     using System;
     using System.Runtime.InteropServices;
     using System.Runtime.InteropServices.WindowsRuntime;
-    using System.Runtime.Serialization;
-    using System.Text;
     using System.Threading.Tasks;
     using Windows.Networking;
     using Windows.Networking.Sockets;
@@ -101,6 +99,11 @@
                     // happy to keep it going on some thread pool thread.
                     var msg = await this.ReadMessageAsync().ConfigureAwait(false);
 
+                    if (msg == null)
+                    {
+                        break;
+                    }
+
                     // We don't await this as we want to get straight back to our
                     // reading messages.
                     Task.Factory.StartNew(
@@ -129,11 +132,17 @@
 
             int size = BitConverter.ToInt32(bits, 0) - Marshal.SizeOf<Int32>();
 
-            bits = new byte[size];
+            if (size > 0)
+            {
+                bits = new byte[size];
 
-            await this.socket.InputStream.ReadAsync(bits.AsBuffer(),
-              (uint)bits.Length, InputStreamOptions.None);
-
+                await this.socket.InputStream.ReadAsync(bits.AsBuffer(),
+                  (uint)bits.Length, InputStreamOptions.None);
+            }
+            else
+            {
+                bits = null;
+            }
             return (bits);
         }
         public void Close()

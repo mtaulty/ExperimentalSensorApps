@@ -18,8 +18,11 @@ namespace DesktopApp
         {
             SoftwareBitmap bitmap = null;
 
+            var alpha = format == BitmapPixelFormat.Bgra8 ?
+                BitmapAlphaMode.Premultiplied : BitmapAlphaMode.Ignore;
+
             var intermediate = SoftwareBitmap.CreateCopyFromBuffer(
-                 buffer, format, width, height);
+                 buffer, format, width, height, alpha);
 
             if (intermediate.BitmapPixelFormat != BitmapPixelFormat.Bgra8)
             {

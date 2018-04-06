@@ -9,6 +9,7 @@
     <Import_RootNamespace>SharedCode</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)MessageConstants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UwpComms\AutoConnectMessagePipe.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UwpComms\BluetoothLEStreamSocketAdvertisement.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UwpComms\BluetoothLEStreamSocketAdvertiser.cs" />

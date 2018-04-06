@@ -28,8 +28,7 @@
     <Capability Name="privateNetworkClientServer" />
     <uap2:Capability Name="spatialPerception" />
     <rescap:Capability Name="perceptionSensorsExperimental" />
-    <DeviceCapability Name="microphone" />
-    <DeviceCapability Name="webcam" />
     <DeviceCapability Name="bluetooth" />
+    <DeviceCapability Name="webcam" />
   </Capabilities>
 </Package>

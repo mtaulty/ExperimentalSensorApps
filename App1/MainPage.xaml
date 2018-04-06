@@ -11,12 +11,8 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock FontSize="18" TextAlignment="Center">
-                <Run>Depth Frames Sent </Run>
-                <Run Text="{x:Bind DepthFrameCount,Mode=OneWay}"/>
-            </TextBlock>
-            <TextBlock FontSize="18" TextAlignment="Center">
-                <Run>IR Frames Sent </Run>
-                <Run Text="{x:Bind IRFrameCount,Mode=OneWay}"/>
+                <Run>Frames Sent </Run>
+                <Run Text="{x:Bind FrameCount,Mode=OneWay}"/>
             </TextBlock>
         </StackPanel>
     </Grid>
